@@ -1,0 +1,16 @@
+FROM redhat/ubi8:latest
+RUN yum install java -y
+WORKDIR /opt
+#ADD https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.85/bin/apache-tomcat-8.5.85.tar.gz tomcat8.tar.gz
+COPY script.sh script.sh
+RUN ls
+ADD tomcat8.tar.gz tomcat8 
+# RUN mv apache-tomcat-8.5.85 tomcat8
+RUN ls
+EXPOSE 8080
+RUN ls
+RUN cd /opt/tomcat8/
+RUN pwd
+#CMD ["/opt/tomcat8/bin/catalina.sh", "run"]
+#CMD ["sh", "/opt/tomcat8/bin/startup.sh" ]
+CMD ["sh","/opt/script.sh"]
